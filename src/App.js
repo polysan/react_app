@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Article from './components/Article';
 
 function App() {
+  const [message,setMessage] = useState(true); 
+  const changeMessage = () => {
+    setMessage(prevState => !prevState);
+  };
+  const style = { container: { color: "red", height: 100, width: 100 } };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='center'>
+      <Article
+      message={message}
+      />
+      <button onClick={changeMessage} style={style.container}>{message ? '吉幾三':'波田陽区'}</button>
     </div>
   );
 }
-
 export default App;
